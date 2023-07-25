@@ -7,9 +7,9 @@ import 'package:surf_practice_magic_ball/core/business_logic.dart';
 class MainScreen extends StatelessWidget {
   MainScreen({Key? key}) : super(key: key);
 
-  final Ball ballWidget = Ball(onPressed: (widget) {
+  final Ball ballWidget = Ball(onPressed: (state) {
     var result = MockBusinessLogic().getAnswer();
-    widget.updateAnswer(result);
+    state.updateAnswer(result);
   });
 
   @override

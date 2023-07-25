@@ -8,14 +8,10 @@ class Ball extends StatefulWidget {
     required this.onPressed,
   });
 
-  final Function(Ball) onPressed;
-  final AnswerState answerStatus = AnswerState();
+  final Function(AnswerState) onPressed;
 
-  AnswerState createState() => answerStatus;
-
-  updateAnswer(String value) {
-    answerStatus.updateAnswer(value);
-  }
+  @override
+  AnswerState createState() => AnswerState();
 }
 
 class AnswerState extends State<Ball> {
@@ -32,19 +28,24 @@ class AnswerState extends State<Ball> {
     return Center(
       child: Column(
         children: [
-          Text(
-            answerValue,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            style: kResultTextStyles,
-          ),
-          GestureDetector(
-            child: SizedBox(
-              width: 320.0,
-              height: 320.0,
-              child: Image.asset('assets/images/ball.png'),
-            ),
-            onTap: () => widget.onPressed(widget),
+          Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              GestureDetector(
+                child: SizedBox(
+                  width: 320.0,
+                  height: 320.0,
+                  child: Image.asset('assets/images/ball.png'),
+                ),
+                onTap: () => widget.onPressed(this),
+              ),
+              Text(
+                answerValue,
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: kResultTextStyles,
+              ),
+            ],
           ),
           const Padding(padding: EdgeInsets.only(top: 40)),
           SizedBox(
