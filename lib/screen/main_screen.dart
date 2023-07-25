@@ -9,8 +9,7 @@ class MainScreen extends StatelessWidget {
 
   final Ball ballWidget = Ball(onPressed: (widget) {
     var result = MockBusinessLogic().getAnswer();
-    //widget.updateAnswer(result);  Error investigate
-    //show result
+    widget.updateAnswer(result);
   });
 
   @override
