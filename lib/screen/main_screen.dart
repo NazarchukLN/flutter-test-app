@@ -8,7 +8,7 @@ class MainScreen extends StatelessWidget {
   MainScreen({Key? key}) : super(key: key);
 
   final Ball ballWidget = Ball(onPressed: (state) {
-    MockBusinessLogic().getAnswer().then((result) => state.updateAnswer(result));
+    BusinessLogic().getAnswer().then((result) => state.updateAnswer(result));
   });
 
   @override
