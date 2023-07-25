@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:surf_practice_magic_ball/screen/magic_ball_screen.dart';
+import 'package:surf_practice_magic_ball/constants.dart';
+import 'package:surf_practice_magic_ball/screen/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,11 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: kAppName,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.lightBlue,
       ),
-      home: const MagicBallScreen(),
+      home: const MainScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
