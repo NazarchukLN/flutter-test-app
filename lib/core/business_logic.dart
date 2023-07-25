@@ -1,7 +1,7 @@
 import 'dart:math';
 
 abstract class IBusinessLogic {
-  String getAnswer();
+  Future<String> getAnswer();
 }
 
 class MockBusinessLogic implements IBusinessLogic {
@@ -9,8 +9,12 @@ class MockBusinessLogic implements IBusinessLogic {
   final List<String> _mockAnswers = ['Yes', 'No', 'Go to work', 'Nothing'];
 
   @override
-  String getAnswer() {
-    var result = _mockAnswers[_random.nextInt(_mockAnswers.length)];
-    return result;
+  Future<String> getAnswer() async {
+    return await Future.delayed(
+      const Duration(seconds: 2),
+          () => _mockAnswers[_random.nextInt(_mockAnswers.length)],
+    );
+
+    //return await Future(() => _mockAnswers[_random.nextInt(_mockAnswers.length)]);
   }
 }
